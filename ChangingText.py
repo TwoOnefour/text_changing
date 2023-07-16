@@ -1,6 +1,7 @@
 import random
 import re
 import json
+import os
 
 
 class ChangingText:
@@ -18,9 +19,13 @@ class ChangingText:
         text_index = self.get_random()
         for i in self.texts[text_index]:
             print(f"原句为：{self.texts[text_index][i]}")
-            print(self.texts[text_index][i].replace(i, input(f"请输入替换{i}的名字:")))
+            text = self.texts[text_index][i].replace(i, input(f"请输入替换{i}的名字:"))
+            print(text)
+            os.system(f"echo {text} | clip")
+            print("已复制到剪切板")
 
 
 if __name__ == "__main__":
     test = ChangingText()
+    test.clip_to_clipboard = True  # 复制到剪切板
     test.run()
