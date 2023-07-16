@@ -21,8 +21,9 @@ class ChangingText:
             print(f"原句为：{self.texts[text_index][i]}")
             text = self.texts[text_index][i].replace(i, input(f"请输入替换{i}的名字:"))
             print(text)
-            os.system(f"echo {text} | clip")
-            print("已复制到剪切板")
+            if self.clip_to_clipboard:
+                os.system(f"echo {text} | clip")
+                print("已复制到剪切板")
 
 
 if __name__ == "__main__":
